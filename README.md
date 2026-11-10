@@ -79,7 +79,7 @@ git clone https://github.com/LufeCovizzi/analise-vendas-restaurante.git
 cd analise-vendas-restaurante
 python -m venv .venv
 .venv\Scripts\activate        # Windows
-pip install pandas jupyter
+pip install -r requirements.txt
 ```
 
 Depois, abra o `analise.ipynb` no Jupyter ou no VS Code e execute as células em ordem.
