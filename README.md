@@ -1,6 +1,6 @@
 # Análise de Vendas de Restaurante
 
-> 🚧 **Projeto em andamento.** Exploração inicial concluída. Próxima etapa: limpeza dos dados.
+> 🚧 **Projeto em andamento.** Etapa atual: limpeza dos dados.
 
 Relatório de vendas para restaurantes, feito em Python com pandas. O objetivo é transformar o histórico de vendas em respostas práticas para o dono do restaurante: o que mais vende, quando o movimento é maior e como o faturamento está evoluindo.
 
@@ -42,7 +42,7 @@ Assim como acontece em dados reais, o dataset tem problemas de qualidade que pre
 ## Etapas
 
 - [x] **1. Exploração inicial**: entender a estrutura, os tipos e a qualidade dos dados
-- [ ] **2. Limpeza**: corrigir os problemas encontrados na exploração *(próxima)*
+- [ ] **2. Limpeza**: corrigir os problemas encontrados na exploração *(em andamento)*
 - [ ] **3. Análise**: responder às 5 perguntas de negócio
 - [ ] **4. Painel**: visualização interativa no Looker Studio
 - [ ] **5. Conclusões**: recomendações para o restaurante
@@ -64,6 +64,19 @@ Assim como acontece em dados reais, o dataset tem problemas de qualidade que pre
 - **Esse cuidado muda o resultado.** Se as linhas fossem contadas como pedidos, o ticket médio cairia para R$ 24,20, cerca de metade do valor real.
 - **Datas e horários vieram como texto.** As colunas `data` e `hora` precisam ser convertidas para que seja possível analisar meses, dias da semana e horários.
 - **Há formas de pagamento faltando.** A coluna `forma_pagamento` tem 15 valores vazios. Essas vendas aconteceram, então as linhas **não** devem ser apagadas, para não reduzir o faturamento.
+
+## Limpeza dos dados *(em andamento)*
+
+Regras seguidas: o arquivo original nunca é alterado, cada problema é investigado antes de ser corrigido, e toda correção é verificada.
+
+| Problema | Decisão | Situação |
+|---|---|---|
+| **Nomes de itens escritos de formas diferentes**: 34 nomes para 18 itens, por espaços sobrando e letras minúsculas (ex.: `'Refrigerante Lata '` e `'refrigerante lata'`) | Remover espaços com `strip()` e corrigir as 8 versões em minúsculo com um dicionário. O `title()` foi descartado porque estragava nomes como "Porção De Calabresa" | ✅ Resolvido |
+| **Linhas duplicadas**: 6 itens registrados duas vezes, que inflavam o faturamento em R$ 123,00 | Remover as cópias. Como duas unidades de um item ficam numa só linha (`quantidade` = 2), linhas idênticas não são vendas reais | ✅ Resolvido |
+| **`data` e `hora` como texto** | Converter para os tipos de data e hora | ⏳ Pendente |
+| **15 formas de pagamento vazias** | Manter as linhas, porque as vendas aconteceram | ⏳ Pendente |
+
+Após as correções feitas até agora, a base tem **8.500 linhas**, **4.243 pedidos**, faturamento de **R$ 205.745,00** e ticket médio de **R$ 48,49** (ainda preliminares).
 
 ## Tecnologias
 
