@@ -73,7 +73,7 @@ Regras seguidas: o arquivo original nunca é alterado, cada problema é investig
 |---|---|---|
 | **Nomes de itens escritos de formas diferentes**: 34 nomes para 18 itens, por espaços sobrando e letras minúsculas (ex.: `'Refrigerante Lata '` e `'refrigerante lata'`) | Remover espaços com `strip()` e corrigir as 8 versões em minúsculo com um dicionário. O `title()` foi descartado porque estragava nomes como "Porção De Calabresa" | ✅ Resolvido |
 | **Linhas duplicadas**: 6 itens registrados duas vezes, que inflavam o faturamento em R$ 123,00 | Remover as cópias. Como duas unidades de um item ficam numa só linha (`quantidade` = 2), linhas idênticas não são vendas reais | ✅ Resolvido |
-| **`data` e `hora` como texto** | Converter para os tipos de data e hora | ⏳ Pendente |
+| **`data` e `hora` como texto** | Converter a `data` para o tipo de data. A `hora` não foi convertida direto, porque o pandas inventaria uma data para completá-la: em vez disso, criei a coluna `hora_cheia` (10, 11, ..., 22), ideal para mostrar os horários de pico no dashboard. Validação: nenhuma venda numa segunda-feira, dia em que o restaurante fecha | ✅ Resolvido |
 | **15 formas de pagamento vazias** | Manter as linhas, porque as vendas aconteceram | ⏳ Pendente |
 
 Após as correções feitas até agora, a base tem **8.500 linhas**, **4.243 pedidos**, faturamento de **R$ 205.745,00** e ticket médio de **R$ 48,49** (ainda preliminares).
